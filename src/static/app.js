@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
+  const searchInput = document.getElementById("activity-search");
+  const sortSelect = document.getElementById("sort-activities");
 
   // Function to fetch activities from API
   async function fetchActivities() {
@@ -154,6 +156,10 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error signing up:", error);
     }
   });
+
+  // Add listeners for search and sort
+  if (searchInput) searchInput.addEventListener("input", renderActivities);
+  if (sortSelect) sortSelect.addEventListener("change", renderActivities);
 
   // Initialize app
   fetchActivities();
